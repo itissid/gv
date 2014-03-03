@@ -12,6 +12,7 @@ if g:gv_python != 'disable' && (g:gv_python == 'python3' || !has('python') && ha
 
 elseif g:gv_python != 'disable' && has('python')
     let g:gv_python = 'python'
+	echom 'Here in p/gerrit.vim'
     command! -nargs=1 GvPython python <args>
 
 else
