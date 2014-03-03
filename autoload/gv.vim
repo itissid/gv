@@ -1,8 +1,7 @@
-GvPython from pygerrit import gerrit_api
-GvPython from pygerrit import salting
+echom 'Here in a/gv.vim'
 
 " DESC: Import python libs that are needed
-fun! pymode#init(plugin_root, paths) "{{{
+fun! gv#init(plugin_root, paths) "{{{
 
     if g:gv_python == 'disable'
         if g:gv_warning
@@ -12,7 +11,6 @@ fun! pymode#init(plugin_root, paths) "{{{
     endif
 
 
-	echom 'Here in a/gv.vim'
     GvPython import sys, vim
     GvPython sys.path.insert(0, vim.eval('a:plugin_root'))
     GvPython sys.path = vim.eval('a:paths') + sys.path
@@ -40,7 +38,9 @@ endfunction "}}}
 fun! gv#gvshowstatus() "{{{
 	" Call the function that will display things on the
 	" screen.
-	gerrit_api.gerrit_status_wrapper()
+	GvPython from pygerrit import gerrit_api
+	GvPython from pygerrit import salting
+	GvPython gerrit_api.gerrit_status_wrapper()
 
 endfunction "}}}
 

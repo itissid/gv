@@ -3,7 +3,7 @@
 
 call gv#default('g:gv_python', 'python')
 call gv#default('g:gv_paths', [])
-call gv#defualt('g:gv_show_status', '<C-c>ga')
+call gv#default('g:gv_show_status', '<C-c>ga')
 call gv#default('g:gv_plugin_root', expand('<sfile>:p:h:h'))
 
 if g:gv_python != 'disable' && (g:gv_python == 'python3' || !has('python') && has('python3'))
@@ -12,8 +12,9 @@ if g:gv_python != 'disable' && (g:gv_python == 'python3' || !has('python') && ha
 
 elseif g:gv_python != 'disable' && has('python')
     let g:gv_python = 'python'
-	echom 'Here in p/gerrit.vim'
     command! -nargs=1 GvPython python <args>
+    filetype plugin on
+    runtime ftplugin/python/gv.vim
 
 else
     let g:gv_python = 'disable'
