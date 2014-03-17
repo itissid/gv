@@ -40,7 +40,20 @@ fun! gv#gvshowstatus() "{{{
 	" screen.
 	GvPython from pygerrit import gerrit_api
 	GvPython from pygerrit import salting
-	GvPython gerrit_api.gerrit_status_wrapper()
+	GvPython gerrit_api.gerrit_status()
+	" In general I feel unconfomfortable adding
+	" this binding here. Perhaps there should be a better
+	" API for callback that does some post actions.
+	nnoremap <buffer> <C-g>v "zyiw:call gv#display_change_contents(@z)<CR>
 
 endfunction "}}}
 
+fun! gv#display_change_contents(contents) "{{{
+	echo a:contents
+	" Pick the change ID and rev id in the lookup
+	" built by the previous call. Then display the
+	" changes in the new buffer. 3 buffers will be
+	" created. Top one for displaying the commit message and the file list.
+	" The middle one the file contents and the
+	" bottom one showing the comments
+endfunction "}}}

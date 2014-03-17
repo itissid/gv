@@ -2,6 +2,7 @@ gv
 ==
 
 Gerrit Vim plugin.
+PS: Bottom of the readme for how much work is done.
 
 Why it exists. A great way to learn VIM scripting and building plugins.
 
@@ -16,3 +17,8 @@ The quick fix window will show all the abbreviated comments(140 chars) and selec
 will inline it with the file's contents with highlighting.
 
 Later versions may allow one to see diffs and other things.
+
+TODOs
+1) Figure out new Oauthing stuff in gerrit. ATM you have to SSH Tunnel to access the REST API.
+2) Add a virtualenv from klen/pymode for requests package in the Venv.
+3) Organize the code a bit more
