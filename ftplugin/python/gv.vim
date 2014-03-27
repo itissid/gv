@@ -12,5 +12,4 @@ if g:gv_show_changes != ""
 
 	exe "nnoremap " . g:gv_show_changes . " :GvShowChanges<CR>"
 	command! -nargs=0 GvShowChanges call gv#gvshowchanges()
-	nnoremap <buffer> <C-g>v "zyiw:call gv#gvshowchanges(@z)<CR>
 endif

@@ -1,5 +1,6 @@
 echom 'Here in a/gv.vim'
 
+
 " DESC: Import python libs that are needed
 fun! gv#init(plugin_root, paths) "{{{
 
@@ -38,8 +39,7 @@ endfunction "}}}
 fun! gv#gvshowstatus() "{{{
 	" Call the function that will display things on the
 	" screen.
-	GvPython from pygerrit import gerrit_api
-	GvPython from pygerrit import salting
+        GvPython from pygerrit import gerrit_api
 	GvPython gerrit_api.gerrit_status()
 	" In general I feel unconfomfortable adding
 	" this binding here. Perhaps there should be a better
@@ -56,4 +56,14 @@ fun! gv#display_change_contents(contents) "{{{
 	" created. Top one for displaying the commit message and the file list.
 	" The middle one the file contents and the
 	" bottom one showing the comments
+        GvPython from pygerrit import gerrit_api
+        GvPython import vim
+	if has_key(g:gerrit_change_id_lookup, a:contents)
+            let val = g:gerrit_change_id_lookup[a:contents]
+            let function_args = {'change_id': a:contents, 'revision_id': val}
+            GvPython gerrit_api.display_change_contents(format_params = vim.eval("function_args"))
+	else
+            echom "Could not find "+a:contents+" in dictionary"
+        endif
+
 endfunction "}}}

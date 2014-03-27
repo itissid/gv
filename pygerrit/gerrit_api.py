@@ -50,6 +50,7 @@ def auth_and_get_result(query_string=None):
 				else:
 					_query_string = query_string
 
+				print _query_string
 				auth_response = requests.get(
 						authentication_url + _query_string,
 						auth=digest_auth)
@@ -110,7 +111,7 @@ def gerrit_status(response=None):
 		gerrit_status_buffer.append(
 				("        S| (%s..) %s" % (partial_change_id, subject)))
 		store_command = ":let g:gerrit_change_id_lookup[\"%s\"] = \"%s\"" % (
-				change_id, revision_lookup_id)
+				partial_change_id, revision_lookup_id)
 		vim.command(store_command)
 	gerrit_status_buffer.append(20 * "-")
 	vim.command(":setlocal noma")
