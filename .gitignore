@@ -2,3 +2,10 @@
 *.swp
 *.swo
 .ropeproject/*
+
+bin/*
+config/*
+include/*
+lib/*
+.Python
+share/*
